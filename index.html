@@ -1,38 +1,70 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Word-Guess-Game</title>
     <link rel="stylesheet" href="./assets/css/reset.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="./assets/javascript/game.js">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="./assets/css/style.css">
-    
+
 </head>
+
 <body>
 
-<script>
+    <!-- <script src="./assets/javascript/game.js"></script> -->
 
-//Create an array that consists of a set of words 
-var wordlist=["trait","hover","blame","basin","raise","title","shell","tight","chalk","study","blade",
-"issue","guard","spill","tiger"];
+    <script>
+        //Create an array that consists of a set of words 
+        var wordlist = ["trait", "hover", "blame", "basin", "raise", "title", "shell", "tight", "chalk", "study", "blade",
+            "issue", "guard", "spill", "tiger"];
 
-//Pick a random word from wordlist
+        //Pick a random word from wordlist
 
-var rnumber=wordlist[Math.floor(Math.random()*wordlist.length)];
+        var rnumber = wordlist[Math.floor(Math.random() * wordlist.length)];
 
-console.log(rnumber);
+        //Print random number as part of test 
+        console.log(rnumber);
 
-var uArr=[];
-for (var i=0;i<rnumber.length;i++){
-    uArr[i]="_";
-}
+        //
+        var uArr = [];
+        for (var i = 0; i < rnumber.length; i++) {
+            uArr[i] = "_";
+        }
 
-alert(uArr);
-    
-</script>
-    
+        alert(uArr);
+
+        var ralpha=rnumber.length;
+
+        if (ralpha>0) {
+            alert(uArr.join(" "));
+        }
+
+        var uGuess = prompt("What is your guess?");
+
+        if (uGuess.length!==1) {
+            alert("Enter one alphabet please!");
+        } else {
+            for (var x = 0; x < rnumber.length; x++) { 
+                if (rnumber===uGuess) {
+                    uArr[x]===uGuess;
+                    ralpha--;
+                }               
+                
+            }
+
+
+        }
+
+        alert(uArr.join(" "));
+
+
+
+    </script>
+
 </body>
+
 </html>

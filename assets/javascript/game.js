@@ -24,6 +24,7 @@ var ralpha = rnumber.length;
 
 var guessCount=0;
 //var rGuess=8;
+var lArr=[];
 
 while (ralpha > 0) {
     alert(dispArr.join(" "));
@@ -33,6 +34,7 @@ while (ralpha > 0) {
 
     var uGuess = prompt("What is your guess?");
     guessCount=guessCount+1;
+    //document.getElementById("empty-div1").innerHTML = guessCount;
 /*     rGuess=rGuess-guessCount;
         alert("You have "+rGuess+" guesses remaining"); */
 
@@ -51,6 +53,9 @@ while (ralpha > 0) {
             if (rnumber[x] === uGuess) {
                 dispArr[x] = uGuess;
                     ralpha--;
+                    //alert(dispArr[x]);
+                    lArr.push(dispArr[x])
+                    //document.getElementById("empty-div2").innerHTML = ralpha;
 /*                     rGuess=rGuess-guessCount;
                     alert("You have "+rGuess+" guesses remaining");    */         
 /*                     console.log(ralpha);
@@ -61,7 +66,11 @@ while (ralpha > 0) {
         }
     }
 
-}  /* else if(guessCount>=8) {
+}  
+document.getElementById("guess-log").innerHTML = lArr;
+document.getElementById("remaining-alpha").innerHTML = ralpha;
+
+/* else if(guessCount>=8) {
     alert("You lost the game")
 }  */
 //alert(dispArr.join(" "));

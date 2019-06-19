@@ -1,9 +1,10 @@
 //Create an array of words from which we can randomly pick a word for the user to guess
-var wordlist = ["trait"];
+var wordlist =["hover","scandal","withdraw","time","tycoon","relief","revenge","drill","carriage","resident"];
+
 
 //We should be able to randomly pick a word from the array
 
-var rnumber = wordlist[Math.floor(Math.random() * wordlist.length)];
+var rWord = wordlist[Math.floor(Math.random() * wordlist.length)];
 
 //number of guesses remaining 
 
@@ -13,70 +14,67 @@ var rnumber = wordlist[Math.floor(Math.random() * wordlist.length)];
 //We should be able to display the number of characters in the word to the user
 
 var dispArr = [];
-for (var i = 0; i < rnumber.length; i++) {
+for (var i = 0; i < rWord.length; i++) {
     dispArr[i] = "_";
     //alert("Your progress: "+dispArr[i])
 }
 
 //How many characters were guessed and the remaining characters should be stored
 
-var ralpha = rnumber.length;
+var ralpha = rWord.length;
+var wins = 0;
 
-var guessCount=0;
-//var rGuess=8;
-var lArr=[];
+//set guess count to zero
+var guessCount = 0;
 
+//Create an array that does not have any value inside of it. This can be used to store all guesses
+var lArr = [];
+
+//while loop where the remaining alphabet is greater than zero
 while (ralpha > 0) {
+
     alert(dispArr.join(" "));
 
 
     //User's guess
 
-    var uGuess = prompt("What is your guess?");
-    guessCount=guessCount+1;
-    //document.getElementById("empty-div1").innerHTML = guessCount;
-/*     rGuess=rGuess-guessCount;
-        alert("You have "+rGuess+" guesses remaining"); */
+    var userGuess = prompt("What is your guess?");
+    guessCount = guessCount + 1;
+
 
 
     //Scenarios involved where remaining alphabets is greater than zero
 
-    if (uGuess == null) { break;}
-    else if (uGuess.length !== 1) {
+    if (userGuess == null) { break; }
+    else if (userGuess.length !== 1) {
         alert("Enter one alphabet please!");
-    }  else if(guessCount>7) {
-        document.write("You lost the game");
+    } else if (guessCount > 7) {
+        alert("You lost the game");
         break;
-    }     
+    }
     else {
-        for (var x = 0; x < rnumber.length; x++) {
-            if (rnumber[x] === uGuess) {
-                dispArr[x] = uGuess;
-                    ralpha--;
-                    //alert(dispArr[x]);
-                    lArr.push(dispArr[x])
-                    //document.getElementById("empty-div2").innerHTML = ralpha;
-/*                     rGuess=rGuess-guessCount;
-                    alert("You have "+rGuess+" guesses remaining");    */         
-/*                     console.log(ralpha);
-                guessesLeft=(8-ralpha);
-                alert("You have "+ guessesLeft+" more characters to guess") */
-               
+        for (var x = 0; x < rWord.length; x++) {
+            if (rWord[x] === userGuess) {
+                dispArr[x] = userGuess;
+                ralpha--;
+                lArr.push(dispArr[x]);
             } 
+
+            }
+            if (lArr.length === rWord.length) {
+                wins++;
+                //alert(wins);
+
         }
     }
+}
 
-}  
+
+
 document.getElementById("guess-log").innerHTML = lArr;
 document.getElementById("remaining-alpha").innerHTML = ralpha;
+document.getElementById("win-log").innerHTML = wins;
 
-/* else if(guessCount>=8) {
-    alert("You lost the game")
-}  */
-//alert(dispArr.join(" "));
-
-//document.write("<h1> You Guessed the Word!<h1>");
-//document.write("It took you "+guessCount+ " tries to get the word "+rnumber);
 
 
 

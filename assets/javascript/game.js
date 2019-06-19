@@ -1,13 +1,9 @@
 //Create an array of words from which we can randomly pick a word for the user to guess
-var wordlist =["hover","scandal","withdraw","time","tycoon","relief","revenge","drill","carriage","resident"];
+var wordlist = ["hover", "scandal", "withdraw", "time", "tycoon", "relief", "revenge", "drill", "carriage", "resident"];
 
 //We should be able to randomly pick a word from the array
 
 var rWord = wordlist[Math.floor(Math.random() * wordlist.length)];
-
-//number of guesses remaining 
-
-//var guessesLeft;
 
 
 //We should be able to display the number of characters in the word to the user
@@ -41,8 +37,6 @@ while (ralpha > 0) {
     var userGuess = prompt("What is your guess?");
     guessCount = guessCount + 1;
 
-
-
     //Scenarios involved where remaining alphabets is greater than zero
 
     if (userGuess == null) { break; }
@@ -60,19 +54,19 @@ while (ralpha > 0) {
                 ralpha--;
                 lArr.push(dispArr[x]);
             }
-            }
-            if (lArr.length === rWord.length) {
-                wins++;
+        }
+        if (lArr.length === rWord.length) {
+            wins++;
         }
     }
 }
-
-
 
 document.getElementById("guess-log").innerHTML = guessCount;
 document.getElementById("remaining-alpha").innerHTML = loss;
 document.getElementById("win-log").innerHTML = wins;
 document.getElementById("rword").innerHTML = rWord;
+//document.getElementById("totalGuess").innerHTML = 
+
 
 
 
